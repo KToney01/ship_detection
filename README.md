@@ -12,4 +12,4 @@ Computer vision research project for detecting ships on satellite imagery.
 
 ## Current Status
 
-Environment and repository setup
+Environment and repository setup complete. Initial computer vision exploration has not yet begun.
