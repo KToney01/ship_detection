@@ -2,9 +2,12 @@ from pathlib import Path
 
 import numpy as np
 import torch
+
+
+from torch.utils.data import DataLoader, Dataset, Subset
 from PIL import Image
-from torch.utils.data import Dataset
 from sklearn.model_selection import StratifiedGroupKFold
+
 
 
 class ShipsNetDataset(Dataset):
@@ -81,3 +84,40 @@ def create_scene_aware_split(
     test_indices = np.concatenate(folds[17:20])
 
     return train_indices, val_indicies, test_indices
+
+def create_data_loaders(
+        dataset, 
+        train_indicies,
+        val_indices,
+        test_indices,
+        batch_size
+):
+    train_dataset = Subset(
+        dataset, 
+        train_indicies.tolist()
+    )
+    val_dataset = Subset(
+        dataset,
+        val_indices.tolist()
+    )
+    test_dataset = Subset(
+        dataset,
+        test_indices.tolist()
+    )
+    train_loader = DataLoader(
+        train_dataset,
+        batch_size=batch_size, 
+        shuffle=True
+    )
+    val_loader = DataLoader(
+        val_dataset,
+        batch_size=batch_size,
+        shuffle=False
+    )
+    test_loader = DataLoader(
+        test_dataset,
+        batch_size=batch_size,
+        shuffle=False
+    )
+
+    return train_loader, val_loader, test_loader
