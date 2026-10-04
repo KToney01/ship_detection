@@ -1,0 +1,18 @@
+{
+    "experiment_id": "EXP-001-baseline",
+    "dataset": "ShipsNet",
+    "seed": 42,
+    "batch_size": 32,
+    "learning_rate": 0.01,
+    "num_epochs": 20,
+    "optimizer": "SGD",
+    "loss_function": "CrossEntropyLoss",
+    "split_method": "StratifiedGroupKFold",
+    "num_folds": 20,
+    "target_split": {
+        "train": 0.7,
+        "validation": 0.15,
+        "test": 0.15
+    },
+    "checkpoint_metric": "validation_f1"
+}

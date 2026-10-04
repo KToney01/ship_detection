@@ -1,0 +1,46 @@
+{
+    "experiment_id": "EXP-001-baseline",
+    "best_checkpoint": {
+        "epoch": 17,
+        "validation": {
+            "loss": 0.14366450905799866,
+            "accuracy": 0.9483870967741935,
+            "precision": 0.9256756756756757,
+            "recall": 0.8670886075949367,
+            "f1": 0.8954248366013071
+        }
+    },
+    "test": {
+        "loss": 0.16166480742905237,
+        "accuracy": 0.922945205479452,
+        "precision": 0.875968992248062,
+        "recall": 0.795774647887324,
+        "f1": 0.8339483394833949,
+        "confusion_matrix": {
+            "true_positive": 113,
+            "true_negative": 426,
+            "false_positive": 16,
+            "false_negative": 29
+        }
+    },
+    "actual_split": {
+        "train": {
+            "samples": 2796,
+            "ships": 700,
+            "no_ships": 2096,
+            "ship_rate": 0.2503576537911302
+        },
+        "validation": {
+            "samples": 620,
+            "ships": 158,
+            "no_ships": 462,
+            "ship_rate": 0.25483870967741934
+        },
+        "test": {
+            "samples": 584,
+            "ships": 142,
+            "no_ships": 442,
+            "ship_rate": 0.24315068493150685
+        }
+    }
+}
