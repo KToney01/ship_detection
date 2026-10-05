@@ -121,3 +121,17 @@ def create_data_loaders(
     )
 
     return train_loader, val_loader, test_loader
+
+def summarize_split(labels, indices):
+    split_labels = labels[indices]
+
+    total = len(indices)
+    ships = int(split_labels.sum())
+    no_ships = total - ships
+
+    return {
+        "samples": total,
+        "ships": ships,
+        "no_ships": no_ships,
+        "ship_rate": ships / total
+    }

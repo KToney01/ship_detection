@@ -1,3 +1,5 @@
+from pathlib import Path
+import torch
 import torch.nn as nn
 
 
@@ -29,3 +31,26 @@ def create_model():
         )
 
     )
+
+def load_model(
+        model,
+        checkpoint_path,
+        device
+):
+    checkpoint_path = Path(checkpoint_path)
+
+    if not checkpoint_path.exists():
+        raise FileNotFoundError(
+            F"Checkpoint not found: {checkpoint_path.resolve()}"
+        )
+
+    checkpoint = torch.load(
+        checkpoint_path,
+        map_location=device
+    )
+
+    model.load_state_dict(
+        checkpoint["model_state_dict"]
+    )
+
+    return model, checkpoint
