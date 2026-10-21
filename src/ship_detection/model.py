@@ -44,6 +44,8 @@ def load_model(
             F"Checkpoint not found: {checkpoint_path.resolve()}"
         )
 
+    model = model.to(device)
+
     checkpoint = torch.load(
         checkpoint_path,
         map_location=device

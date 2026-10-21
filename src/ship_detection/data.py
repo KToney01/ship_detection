@@ -10,6 +10,25 @@ from sklearn.model_selection import StratifiedGroupKFold
 
 
 
+def load_image_tensor(image_path):
+    image_path = Path(image_path)
+
+    image = Image.open(image_path).convert("RGB")
+
+    if image.size != (80, 80):
+        raise ValueError(
+            f"Expected an 80x80 image, got {image.size}"
+        )
+
+    image_array = np.array(image)
+
+    image_tensor = torch.from_numpy(image_array)
+    image_tensor = image_tensor.permute(2, 0, 1)
+    image_tensor = image_tensor.float() / 255.0
+
+    return image_tensor
+
+
 class ShipsNetDataset(Dataset):
     def __init__(self, data_dir):
         self.data_dir = Path(data_dir)
@@ -26,15 +45,13 @@ class ShipsNetDataset(Dataset):
     def __getitem__(self, index):
         image_path = self.image_paths[index]
 
-        image = Image.open(image_path).convert("RGB")
-        image_array = np.array(image)
-
-        image_tensor = torch.from_numpy(image_array)
-        image_tensor = image_tensor.permute(2, 0, 1)
-        image_tensor = image_tensor.float() / 255.0
+        image_tensor = load_image_tensor(image_path)
 
         label = int(image_path.name.split("__")[0])
-        label_tensor = torch.tensor(label, dtype=torch.long)
+        label_tensor = torch.tensor(
+            label, 
+            dtype=torch.long
+            )
 
         return image_tensor, label_tensor
 
@@ -135,3 +152,4 @@ def summarize_split(labels, indices):
         "no_ships": no_ships,
         "ship_rate": ships / total
     }
+
