@@ -25,25 +25,25 @@ The baseline CNN was selected using validation F1 and evaluated once on the held
 | Metric | Result |
 | --- | ---: |
 | Accuracy | 92.29% |
-| Precistion | 87.60% |
+| Precision | 87.60% |
 | Recall | 79.58% |
 | F1 Score | 0.8339 |
 
-The selected checkpoint occured at epoch 17/20 with a validation F1 of 0.8954.
+The selected checkpoint occurred at epoch 17/20 with a validation F1 of 0.8954.
 
 ## Dataset / Methodology
 
-- Uses the [ShipsNet satellite imagery dataset](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery), containing 4,000 RGB image chips at 80 x 80 pixels.
+- Uses the [ShipsNet satellite imagery dataset](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery), containing 4,000 RGB image chips at 80 × 80 pixels.
 - The dataset contains:
- - 1,000 ship images
- - 3,000 no-ship images
+    - 1,000 ship images
+    - 3,000 no-ship images
 - Labels and source-scene identifiers are parsed from the filenames.
 - Data is split using `StratifiedGroupKFold` to preserve class balance while preventing images from the same source scene from appearing across training, validation, and test sets.
 - The baseline split contains approximately:
- - 70% training data
- - 15% validation data
- - 15% test data
-- Images are converted to PyTorch tensors, transformed from HWC to CHW format, and normalized from '[0, 255]' to '[0, 1]'
+    - 70% training data
+    - 15% validation data
+    - 15% test data
+- Images are converted to PyTorch tensors, transformed from HWC to CHW format, and normalized from `[0, 255]` to `[0, 1]`.
 - The held-out test set is reserved for final evaluation and is not used for checkpoint selection.
 
 ## Features
@@ -67,7 +67,7 @@ The selected checkpoint occured at epoch 17/20 with a validation F1 of 0.8954.
 
 ## Inference 
 
-The trained baseline model can classify individual 80 x 80 RGB satellite image chips from the command line.
+The trained baseline model can classify individual 80 × 80 RGB satellite image chips from the command line.
 ```bash
 python -m ship_detection.cli \
     ~/data/shipsnet/example.png \
@@ -97,13 +97,13 @@ python -m pip install -r requirements.txt
 python -m pip install -e .
 ```
 
-Place the ShipsNet dataset in a local directory such as "~/data/shipsnet/"
+Place the ShipsNet dataset in a local directory such as `~/data/shipsnet/`.
 The dataset directory can be overridden with:
 ```bash
-export SHIPSNET_DATA_DIR=path/to/shipsnet
+export SHIPSNET_DATA_DIR=/path/to/shipsnet
 ```
 
-Model checkpoints are not tracked in Git. Download the baseline checkpoint from the project release [v0.1.0 project release](https://github.com/KToney01/ship_detection/releases/tag/v0.1.0) and place it at: `checkpoints/EXP-001-baseline/best_model.pt`
+Model checkpoints are not tracked in Git. Download the baseline checkpoint from the [v0.1.0 project release](https://github.com/KToney01/ship_detection/releases/tag/v0.1.0) and place it at: `checkpoints/EXP-001-baseline/best_model.pt`
 
 
 ## Testing
@@ -129,7 +129,7 @@ ship_detection/
 │   └── 01_baseline_experiment.ipynb
 ├── src/
 │   └── ship_detection/
-        ├──__init__.py
+|       ├──__init__.py
 │       ├── cli.py
 │       ├── data.py
 │       ├── evaluate.py
@@ -150,11 +150,11 @@ ship_detection/
 ├── requirements-gpu.txt
 └── README.md
 ```
-- 'notebooks/' contains exploratory analysis and the reproducible baseline experiment.
-- 'scr/ship_detection/' contains the reusable Python package.
-- 'tests/' contains the automated pytest suite.
-- 'experiments/' stores the reproducible experiment configuration and results,
-- 'checkpoints/' is created locally and excluded from Git.
+- `notebooks/` contains exploratory analysis and the reproducible baseline experiment.
+- `src/ship_detection/` contains the reusable Python package.
+- `tests/` contains the automated pytest suite.
+- `experiments/` stores the reproducible experiment configuration and results.
+- `checkpoints/` is created locally and excluded from Git.
 
 ## Dataset Attribution
 
