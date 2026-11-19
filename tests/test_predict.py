@@ -15,6 +15,7 @@ class FixedPredictionModel(nn.Module):
             dtype=torch.float32
         ).repeat(batch_size, 1)
 
+
 def test_predict_image_returns_expected_prediction(tmp_path):
     image_path = tmp_path / "test.png"
 
@@ -45,6 +46,7 @@ def test_predict_image_returns_expected_prediction(tmp_path):
     assert result["confidence"] == pytest.approx(
         expected_confidence
     )
+
 
 def test_load_image_tensor_rejects_wrong_size(tmp_path):
     image_path = tmp_path / "wrong_size.png"

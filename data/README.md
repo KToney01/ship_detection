@@ -1,10 +1,14 @@
 # Data
 
-This project initially uses the Ships in Satellite Imagery (ShipsNet) dataset.
+This project uses the [ShipsNet satellite imagery dataset](https://www.kaggle.com/datasets/rhammell/ships-in-satellite-imagery).
 
-## Source
+ShipsNet was created from Planet satellite imagery made available through Planet's Open California dataset and is distributed under the CC BY-SA 4.0 license.
 
-Ships in Satellite Imagery, available through Kaggle.
+Dataset files are not included in this repository. Download ShipsNet separately and place the image files in a local directory, for example:
+
+```text
+~/data/shipsnet/
+```
 
 The dataset contains 4,000 80x80 RGB satellite images chips:
 
@@ -23,4 +27,3 @@ The contents of 'data/raw/' are intentionally excluded from Git and must be down
 
 ## License
 
-CC BY-SA 4.0
