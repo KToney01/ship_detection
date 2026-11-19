@@ -103,7 +103,7 @@ The dataset directory can be overridden with:
 export SHIPSNET_DATA_DIR=path/to/shipsnet
 ```
 
-Model checkpoints are not tracked in Git. Download the baseline checkpoint from the project release and place it at: "checkpoints/EXP-001-baseline/best_model.pt"
+Model checkpoints are not tracked in Git. Download the baseline checkpoint from the project release [v0.1.0 project release](https://github.com/KToney01/ship_detection/releases/tag/v0.1.0) and place it at: `checkpoints/EXP-001-baseline/best_model.pt`
 
 
 ## Testing
